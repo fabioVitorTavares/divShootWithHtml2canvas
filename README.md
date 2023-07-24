@@ -2,7 +2,7 @@
 Gerando uma imagem a partir de uma tag HTML
 
 # Lib
-(https://html2canvas.hertzen.com/)
+https://html2canvas.hertzen.com
 
 # Guia
 
