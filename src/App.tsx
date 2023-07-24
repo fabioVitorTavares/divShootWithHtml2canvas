@@ -1,5 +1,6 @@
 import html2canvas from "html2canvas";
 import { useRef, useState } from "react";
+import IMG from "./img/Captura de ecrã de 2023-07-23 23-36-46.png";
 
 function App() {
   const refDiv = useRef<HTMLDivElement>(null);
@@ -13,19 +14,26 @@ function App() {
   }
 
   return (
-    <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 20,
+        alignItems: "center",
+      }}
+    >
       <div
         style={{
-          width: 300,
-          height: 300,
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: "#0009",
         }}
         ref={refDiv}
       >
-        <h1>ok</h1>
+        <h1>ok teste</h1>
+        <img src={IMG} alt="img" />
       </div>
       <button
         onClick={generateImage}
@@ -38,8 +46,6 @@ function App() {
       </button>
       <div
         style={{
-          width: 300,
-          height: 300,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
