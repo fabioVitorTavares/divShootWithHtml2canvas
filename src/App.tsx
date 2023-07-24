@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import html2canvas from "html2canvas";
+import { useRef, useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const refDiv = useRef<HTMLDivElement>(null);
+  const [srcImg, setSrcImg] = useState("");
+
+  async function generateImage() {
+    if (refDiv.current) {
+      const img = await html2canvas(refDiv.current);
+      setSrcImg(img.toDataURL());
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+      <div
+        style={{
+          width: 300,
+          height: 300,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "#0009",
+        }}
+        ref={refDiv}
+      >
+        <h1>ok</h1>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <button
+        onClick={generateImage}
+        style={{
+          width: 300,
+          height: 50,
+        }}
+      >
+        Gerar IMG
+      </button>
+      <div
+        style={{
+          width: 300,
+          height: 300,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          border: "1px solid ",
+        }}
+      >
+        <img src={srcImg} width={"100%"} alt="img" />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
